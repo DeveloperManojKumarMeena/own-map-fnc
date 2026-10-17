@@ -1,16 +1,24 @@
-let arr = [1, 2, 3, 4, 5];
+// Q.Implement a function that limits how many times another function can be called (Closure + HOF).
 
-const cap = (a,fn)=>{
-    let newArray = new Array();
-
-    for(let i=0;i<a.length;i++){
-        newArray.push(fn(a[i]))
+function limiter(fn,v){
+    let setvalue = 0;
+    return ()=>{
+        if(setvalue<v){
+            setvalue++
+            fn()
+        }
     }
-    return newArray
 }
 
-let ans = cap(arr,function(v){
-    return v+2
-})
+let test = limiter(()=>{console.log("Hey bro")},5);
 
-console.log(ans)
+test()
+test()
+test()
+test()
+test()
+test()
+test()
+test()
+test()
+test()
